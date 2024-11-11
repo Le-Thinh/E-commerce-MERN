@@ -6,7 +6,7 @@ import RelatedProducts from "../components/RelatedProducts";
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
@@ -43,7 +43,7 @@ const Product = () => {
             ))}
           </div>
           <div className="w-full sm:w-[80%]">
-            <img className="w-full h-auto rounded" src={image} alt="" />
+            <img className="w-full h-auto rounded-xl" src={image} alt="" />
           </div>
         </div>
 
@@ -83,7 +83,10 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button className="rounded bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
+          <button
+            onClick={() => addToCart(productData._id, size)}
+            className="rounded bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+          >
             ADD TO CARD
           </button>
           <hr className=" mt-8 sm:w-4/5" />
