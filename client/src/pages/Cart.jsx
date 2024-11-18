@@ -11,20 +11,22 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
-    const tempData = [];
-    for (let items in cartItems) {
-      for (let item in cartItems[items]) {
-        if (cartItems[items][item] > 0) {
-          tempData.push({
-            _id: items,
-            size: item,
-            quantity: cartItems[items][item],
-          });
+    if (products.length > 0) {
+      const tempData = [];
+      for (let items in cartItems) {
+        for (let item in cartItems[items]) {
+          if (cartItems[items][item] > 0) {
+            tempData.push({
+              _id: items,
+              size: item,
+              quantity: cartItems[items][item],
+            });
+          }
         }
       }
+      setCartData(tempData);
     }
-    setCartData(tempData);
-  }, [cartItems]);
+  }, [cartItems, products]);
 
   return cartData.length <= 0 ? (
     <div className="flex  items-center justify-center text-2xl text-gray-700 mt-20">
