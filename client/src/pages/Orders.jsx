@@ -75,7 +75,7 @@ const Orders = () => {
                 </p>
                 <p className=" mt-1">
                   Payment:
-                  <span className=" text-gray-400">{item.paymentMethod}</span>
+                  <span className=" text-gray-400"> {item.paymentMethod}</span>
                 </p>
               </div>
             </div>
